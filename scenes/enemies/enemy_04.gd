@@ -102,3 +102,4 @@ func _on_timer_attack_timeout() -> void:
 		_Mode.PREPARING_ATTACK:
 			_mode = _Mode.ATTACKING
 			_is_attacking = false
+

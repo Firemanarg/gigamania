@@ -14,17 +14,17 @@ pre_attack_max_scale = 1.5
 speed = 5.0
 enable_timed_shoot = false
 
-[node name="Sprite2D" parent="." index="0"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ProjectileDetector" index="0"]
+polygon = PackedVector2Array(-24, -32, 24, -32, 24, 0, 0, 32, -24, 0)
+
+[node name="Sprite2D" parent="." index="1"]
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("2_pxtoj")
 
-[node name="VisibleOnScreenNotifier2D" parent="." index="1"]
+[node name="VisibleOnScreenNotifier2D" parent="." index="2"]
 scale = Vector2(2.5, 3.1)
 
 [node name="TimerAttack" type="Timer" parent="." index="3"]
 process_callback = 0
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ProjectileDetector" index="0"]
-polygon = PackedVector2Array(-24, -32, 24, -32, 24, 0, 0, 32, -24, 0)
 
 [connection signal="timeout" from="TimerAttack" to="." method="_on_timer_attack_timeout"]

@@ -18,12 +18,12 @@ attack_initial_delay = 0.0
 speed = 7.0
 enable_timed_shoot = false
 
-[node name="Sprite2D" parent="." index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ProjectileDetector" index="0"]
+shape = SubResource("RectangleShape2D_bur28")
+
+[node name="Sprite2D" parent="." index="1"]
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_irtkg")
 
-[node name="VisibleOnScreenNotifier2D" parent="." index="1"]
+[node name="VisibleOnScreenNotifier2D" parent="." index="2"]
 scale = Vector2(1.8, 1.8)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ProjectileDetector" index="0"]
-shape = SubResource("RectangleShape2D_bur28")

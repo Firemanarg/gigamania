@@ -99,5 +99,14 @@ func _screen_exited_handler() -> void:
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	_screen_exited_handler()
 
+
 func _on_timer_shoot_timeout() -> void:
 	_shoot()
+
+
+func _on_collision_with_player() -> void:
+	LevelManager.hit_player()
+
+
+func _on_projectile_detector_body_entered(body: Node2D) -> void:
+	_on_collision_with_player()

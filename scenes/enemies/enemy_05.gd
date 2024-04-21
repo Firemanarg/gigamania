@@ -46,3 +46,4 @@ func _move(delta: float) -> void:
 
 func _screen_exited_handler() -> void:
 	pass
+

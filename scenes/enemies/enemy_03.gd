@@ -104,3 +104,4 @@ func _shrink(duration: float) -> void:
 	_tween.kill()
 	_tween = null
 	return
+

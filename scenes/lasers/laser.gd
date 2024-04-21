@@ -6,7 +6,6 @@ extends Area2D
 
 
 func _ready() -> void:
-	#rotation = global_position.angle_to(direction)
 	pass
 
 
