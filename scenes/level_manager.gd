@@ -80,20 +80,6 @@ func hit_player() -> void:
 	current_level.set_life_icon_visibility(_lifes, false)
 
 
-#func drain_energy(delta: float) -> void:
-	#var drain_amount: float = _get_player_energy_drain_amount() * delta
-	#if _is_converting_energy_to_score:
-		#drain_amount *= 4.0
-		#_player_energy -= drain_amount
-		#_total_score += roundi(drain_amount * 10)
-		#if _player_energy <= 0:
-			#current_level.next_stage()
-			#return
-	#_player_energy -= drain_amount
-	#if _player_energy <= 0:
-		#_go_to_score_screen()
-
-
 func reset_all() -> void:
 	_total_score = 0
 	_stage_score = 0
@@ -141,7 +127,6 @@ func _go_to_score_screen() -> void:
 	current_level = null
 	laser_layer = null
 	player = null
-	#get_tree().change_scene_to_packed(ScoreScreenScene)
 
 
 func _update_energy_progress_bar() -> void:

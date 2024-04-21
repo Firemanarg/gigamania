@@ -22,7 +22,6 @@ func _get_laser_scene() -> PackedScene:
 
 
 func _shoot() -> void:
-	print("Shooting")
 	var laser: Area2D = _get_laser_scene().instantiate()
 	laser.direction = Vector2.DOWN
 	laser.speed = projectile_speed
