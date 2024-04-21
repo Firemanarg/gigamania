@@ -21,7 +21,7 @@ func _physics_process(_delta: float) -> void:
 
 
 func _on_hitting_player() -> void:
-	print("Player has been hit")
+	LevelManager.hit_player()
 	queue_free()
 
 

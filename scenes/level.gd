@@ -4,6 +4,9 @@ extends Node2D
 signal stage_finished
 signal enemy_died(score_value: int)
 
+const EnabledLifeModulateColor: Color = Color(1, 1, 1, 1)
+const DisabledLifeModulateColor: Color = Color(1, 1, 1, 0)
+
 enum Stage {
 	NO_STAGE,
 	STAGE_01,
@@ -27,6 +30,9 @@ var _remaining_enemies: int = _total_enemies
 
 @onready var energy_progress_bar = %EnergyProgressBar
 @onready var score_label = %ScoreLabel
+@onready var life_icons: Array[TextureRect] = [
+	%LifeIcon0, %LifeIcon1, %LifeIcon2
+]
 
 
 func _ready() -> void:
@@ -53,6 +59,20 @@ func restart_stage() -> void:
 	_start_current_stage()
 
 
+func set_life_icon_visibility(index: int, enable: bool, animated: bool = true) -> void:
+	var life_icon: TextureRect = life_icons[index]
+	var target_color: Color = EnabledLifeModulateColor
+	if not enable:
+		target_color = DisabledLifeModulateColor
+	if not animated:
+		life_icon.modulate = target_color
+		return
+	var tween: Tween = get_tree().create_tween()
+	tween.tween_property(life_icon, "modulate", target_color, 1.0)
+	tween.play()
+	await tween.finished
+
+
 func _start_current_stage() -> void:
 	var stage = StageScenes[_current_stage].instantiate()
 	for child in $Enemies.get_children():
@@ -63,10 +83,12 @@ func _start_current_stage() -> void:
 		enemy.died.connect(_on_individual_enemy_died)
 		_total_enemies += 1
 	_remaining_enemies = _total_enemies
+	print("Starting new stage with ", _total_enemies, " enemies.")
 
 
 func _on_individual_enemy_died(score_value: int) -> void:
 	enemy_died.emit(score_value)
 	_remaining_enemies -= 1
 	if _remaining_enemies <= 0:
+		print("Stage finished!")
 		stage_finished.emit()

@@ -16,6 +16,7 @@ var _speed: float = DefaultNormalSpeed
 var _is_turbo_enabled: bool = false
 
 @onready var timer_shoot = get_node("TimerShoot")
+@onready var start_position: Vector2 = global_position
 
 
 func _ready() -> void:
@@ -30,6 +31,10 @@ func _physics_process(delta: float) -> void:
 	_turbo()
 	_move(delta)
 	_handle_shoot()
+
+
+func is_turbo_enabled() -> bool:
+	return _is_turbo_enabled
 
 
 func _handle_shoot() -> void:

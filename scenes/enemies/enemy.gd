@@ -33,6 +33,7 @@ var _direction: Vector2 = Vector2.RIGHT
 func _ready() -> void:
 	_update_direction()
 	_initial_setup()
+	await get_tree().create_timer(LevelManager.stage_initial_delay).timeout
 	if enable_timed_shoot:
 		await get_tree().create_timer(initial_delay).timeout
 		_shoot()

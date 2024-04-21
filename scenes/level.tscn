@@ -119,7 +119,8 @@ layout_mode = 2
 size_flags_horizontal = 4
 alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer2"]
+[node name="LifeIcon0" type="TextureRect" parent="CanvasLayer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(50, 30)
 layout_mode = 2
 size_flags_horizontal = 6
@@ -128,7 +129,8 @@ texture = ExtResource("7_keceb")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer2"]
+[node name="LifeIcon1" type="TextureRect" parent="CanvasLayer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(50, 30)
 layout_mode = 2
 size_flags_horizontal = 6
@@ -137,7 +139,8 @@ texture = ExtResource("7_keceb")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer2"]
+[node name="LifeIcon2" type="TextureRect" parent="CanvasLayer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(50, 30)
 layout_mode = 2
 size_flags_horizontal = 6
