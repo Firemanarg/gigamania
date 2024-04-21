@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://jfwyqmunds05"]
+[gd_scene load_steps=15 format=3 uid="uid://jfwyqmunds05"]
 
 [ext_resource type="Script" path="res://scenes/level.gd" id="1_th1i5"]
 [ext_resource type="Texture2D" uid="uid://cjubonkvnfxwh" path="res://assets/sprites/projectiles/laser_player.png" id="2_o40pk"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://2t114lbov48j" path="res://assets/sprites/icons/score.png" id="6_cpijs"]
 [ext_resource type="Texture2D" uid="uid://bibuq6ow4d4lh" path="res://assets/sprites/icons/energy.png" id="6_vdi5l"]
 [ext_resource type="Texture2D" uid="uid://cvwjwawub6pn1" path="res://assets/sprites/player.png" id="7_keceb"]
+[ext_resource type="FontFile" uid="uid://ceokif2jtvdfs" path="res://assets/fonts/Megatron.otf" id="7_x0cih"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nlyel"]
 shader = ExtResource("2_s75p0")
@@ -106,6 +107,7 @@ stretch_mode = 5
 [node name="ScoreLabel" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_fonts/font = ExtResource("7_x0cih")
 theme_override_font_sizes/font_size = 25
 text = "123456789"
 

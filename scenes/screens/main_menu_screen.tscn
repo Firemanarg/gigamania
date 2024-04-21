@@ -4,10 +4,10 @@
 [ext_resource type="Shader" path="res://shaders/stars.gdshader" id="1_vycxk"]
 [ext_resource type="FontFile" uid="uid://ceokif2jtvdfs" path="res://assets/fonts/Megatron.otf" id="4_jveyp"]
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_b2cbs"]
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_8afg5"]
 load_path = "res://.godot/imported/laser_enemy_06.png-fb76b42d0f989c7ba1ddf4f31e103d15.ctex"
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_rf6b6"]
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_2xvc8"]
 load_path = "res://.godot/imported/laser_player.png-5b4aa4b36ff6d3b69426b1b2df86c9a7.ctex"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nvtdh"]
@@ -23,15 +23,15 @@ shader_parameter/far_stars_color = Color(1, 1, 1, 0.172549)
 shader_parameter/near_stars_color = Color(1, 1, 1, 0.568627)
 shader_parameter/base_scroll_speed = 0.2
 shader_parameter/additional_scroll_speed = 0.5
-shader_parameter/small_stars_texture = SubResource("CompressedTexture2D_rf6b6")
-shader_parameter/large_stars_texture = SubResource("CompressedTexture2D_b2cbs")
+shader_parameter/small_stars_texture = SubResource("CompressedTexture2D_2xvc8")
+shader_parameter/large_stars_texture = SubResource("CompressedTexture2D_8afg5")
 
-[sub_resource type="Gradient" id="Gradient_il5hw"]
+[sub_resource type="Gradient" id="Gradient_3k6p4"]
 offsets = PackedFloat32Array(0)
 colors = PackedColorArray(0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_ionsf"]
-gradient = SubResource("Gradient_il5hw")
+gradient = SubResource("Gradient_3k6p4")
 fill_to = Vector2(0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hmuvy"]
