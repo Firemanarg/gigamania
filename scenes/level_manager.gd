@@ -1,6 +1,8 @@
 extends Node
 
 
+const ScoreScreenScene: PackedScene = preload("res://scenes/screens/score_screen.tscn")
+
 var current_level: Node2D = null
 var laser_layer: Node2D = null
 var player: Node2D = null
@@ -22,7 +24,7 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	_player_energy -= _get_player_energy_drain_amount() * delta
+	drain_energy(delta)
 	_update_energy_progress_bar()
 
 
@@ -43,11 +45,13 @@ func set_current_level(level: Node2D) -> void:
 		print("Attempting to assign a null level")
 		return
 	current_level = level
+	reset_all()
 	laser_layer = current_level.get_node("LaserLayer")
 	player = current_level.get_node("Player")
 	current_level.energy_progress_bar.min_value = 0.0
 	current_level.energy_progress_bar.max_value = _max_player_energy
 	current_level.energy_progress_bar.set_value(_max_player_energy)
+	_update_score_label()
 	current_level.enemy_died.connect(_on_enemy_died)
 	current_level.stage_finished.connect(_on_stage_finished)
 	await get_tree().create_timer(stage_change_delay).timeout
@@ -60,7 +64,32 @@ func hit_player() -> void:
 	_stage_score = 0
 	_update_score_label()
 	_lifes -= 1
+	if _lifes <= 0:
+		_go_to_score_screen()
+		return
 	current_level.set_life_icon_visibility(_lifes, false)
+
+
+func drain_energy(delta: float) -> void:
+	_player_energy -= _get_player_energy_drain_amount() * delta
+	if _player_energy <= 0:
+		_go_to_score_screen()
+
+
+func reset_all() -> void:
+	_total_score = 0
+	_stage_score = 0
+	_lifes = 3
+	_player_energy = _max_player_energy
+
+
+func get_score() -> int:
+	return _total_score
+
+
+func _go_to_score_screen() -> void:
+	get_tree().call_deferred("change_scene_to_packed", ScoreScreenScene)
+	#get_tree().change_scene_to_packed(ScoreScreenScene)
 
 
 func _update_energy_progress_bar() -> void:
