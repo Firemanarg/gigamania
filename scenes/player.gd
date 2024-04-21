@@ -7,6 +7,8 @@ const DefaultNormalSpeed: float = 400.0
 const DefaultTurboSpeed: float = 2 * DefaultNormalSpeed
 const LaserScene: PackedScene = preload("res://scenes/lasers/laser_player.tscn")
 
+@export var left_limit_x: float = 60
+@export var right_limit_x: float = 1224
 @export var normal_speed: float = DefaultNormalSpeed
 @export var turbo_speed: float = DefaultTurboSpeed
 @export var rotation_speed: float = 10.0
@@ -66,3 +68,4 @@ func _move(delta: float) -> void:
 	rotation = lerp(rotation, RotationStep * rotation_speed * velocity.x * delta, 0.5)
 	rotation = clamp(rotation, -MaxRotationAngle, MaxRotationAngle)
 	move_and_slide()
+	global_position.x = clamp(global_position.x, left_limit_x, right_limit_x)

@@ -70,7 +70,7 @@ fill_from = Vector2(0.5, 0.5)
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_yf84w")
-shoot_delay = 0.1
+shoot_delay = 0.8
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 material = SubResource("ShaderMaterial_2drh3")

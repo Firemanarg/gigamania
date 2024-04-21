@@ -1,6 +1,14 @@
 extends Node
 
 
+enum EnergyState {
+	DRAINING,
+	SCORING,
+	RECHARGING,
+}
+
+const ScoringMultiplier: float = 20.0
+const RechargingMultiplier: float = 40.0
 const ScoreScreenScene: PackedScene = preload("res://scenes/screens/score_screen.tscn")
 
 var current_level: Node2D = null
@@ -18,14 +26,18 @@ var _total_score: int = 0
 var _stage_score: int = 0
 var _lifes: int = 3
 
+var _energy_state: EnergyState = EnergyState.DRAINING
+
 
 func _ready() -> void:
 	pass
 
 
 func _process(delta: float) -> void:
-	drain_energy(delta)
-	_update_energy_progress_bar()
+	if current_level:
+		_energy_handler(delta)
+		_update_energy_progress_bar()
+		_update_score_label()
 
 
 func _physics_process(_delta: float) -> void:
@@ -51,7 +63,6 @@ func set_current_level(level: Node2D) -> void:
 	current_level.energy_progress_bar.min_value = 0.0
 	current_level.energy_progress_bar.max_value = _max_player_energy
 	current_level.energy_progress_bar.set_value(_max_player_energy)
-	_update_score_label()
 	current_level.enemy_died.connect(_on_enemy_died)
 	current_level.stage_finished.connect(_on_stage_finished)
 	await get_tree().create_timer(stage_change_delay).timeout
@@ -62,7 +73,6 @@ func hit_player() -> void:
 	player.global_position = player.start_position
 	current_level.restart_stage()
 	_stage_score = 0
-	_update_score_label()
 	_lifes -= 1
 	if _lifes <= 0:
 		_go_to_score_screen()
@@ -70,10 +80,18 @@ func hit_player() -> void:
 	current_level.set_life_icon_visibility(_lifes, false)
 
 
-func drain_energy(delta: float) -> void:
-	_player_energy -= _get_player_energy_drain_amount() * delta
-	if _player_energy <= 0:
-		_go_to_score_screen()
+#func drain_energy(delta: float) -> void:
+	#var drain_amount: float = _get_player_energy_drain_amount() * delta
+	#if _is_converting_energy_to_score:
+		#drain_amount *= 4.0
+		#_player_energy -= drain_amount
+		#_total_score += roundi(drain_amount * 10)
+		#if _player_energy <= 0:
+			#current_level.next_stage()
+			#return
+	#_player_energy -= drain_amount
+	#if _player_energy <= 0:
+		#_go_to_score_screen()
 
 
 func reset_all() -> void:
@@ -87,8 +105,42 @@ func get_score() -> int:
 	return _total_score
 
 
+func _energy_handler(delta) -> void:
+	match _energy_state:
+		EnergyState.DRAINING: _energy_draining_state(delta)
+		EnergyState.SCORING: _energy_scoring_state(delta)
+		EnergyState.RECHARGING: _energy_recharging_state(delta)
+
+
+func _energy_draining_state(delta: float) -> void:
+	var drain_amount: float = _get_player_energy_drain_amount() * delta
+	_player_energy -= drain_amount
+	if _player_energy <= 0:
+		_go_to_score_screen()
+
+
+func _energy_scoring_state(delta: float) -> void:
+	var drain_amount: float = ScoringMultiplier * _get_player_energy_drain_amount() * delta
+	_player_energy -= drain_amount
+	_total_score += roundi(drain_amount * 20)
+	if _player_energy <= 0:
+		_energy_state = EnergyState.RECHARGING
+
+
+func _energy_recharging_state(delta: float) -> void:
+	var recharge_amount: float = RechargingMultiplier * _get_player_energy_drain_amount() * delta
+	_player_energy += recharge_amount
+	if _player_energy >= _max_player_energy:
+		_player_energy = _max_player_energy
+		current_level.next_stage()
+		_energy_state = EnergyState.DRAINING
+
+
 func _go_to_score_screen() -> void:
 	get_tree().call_deferred("change_scene_to_packed", ScoreScreenScene)
+	current_level = null
+	laser_layer = null
+	player = null
 	#get_tree().change_scene_to_packed(ScoreScreenScene)
 
 
@@ -115,11 +167,9 @@ func _get_player_energy_drain_amount() -> float:
 
 func _on_enemy_died(score_value: int) -> void:
 	_stage_score += score_value
-	_update_score_label()
 
 
 func _on_stage_finished() -> void:
 	_total_score += _stage_score
 	_stage_score = 0
-	_update_score_label()
-	current_level.next_stage()
+	_energy_state = EnergyState.SCORING

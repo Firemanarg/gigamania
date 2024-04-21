@@ -73,7 +73,6 @@ process_callback = 0
 
 [node name="Player" parent="." instance=ExtResource("2_sexvc")]
 position = Vector2(642, 630)
-shoot_delay = 0.05
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
