@@ -1,0 +1,131 @@
+[gd_scene load_steps=2 format=3 uid="uid://jfwyqmunds05"]
+
+[ext_resource type="PackedScene" uid="uid://d110tev3yxhad" path="res://scenes/enemies/enemy_01.tscn" id="1_mbmqg"]
+
+[node name="TestLevel" type="Node2D"]
+
+[node name="Row01" type="Node2D" parent="."]
+
+[node name="Enemy_01" parent="Row01" instance=ExtResource("1_mbmqg")]
+position = Vector2(42, 52)
+speed = 3.0
+
+[node name="Enemy_02" parent="Row01" instance=ExtResource("1_mbmqg")]
+position = Vector2(142, 52)
+speed = 3.0
+
+[node name="Enemy_03" parent="Row01" instance=ExtResource("1_mbmqg")]
+position = Vector2(242, 52)
+speed = 3.0
+
+[node name="Enemy_04" parent="Row01" instance=ExtResource("1_mbmqg")]
+position = Vector2(342, 52)
+speed = 3.0
+
+[node name="Enemy_05" parent="Row01" instance=ExtResource("1_mbmqg")]
+position = Vector2(442, 52)
+speed = 3.0
+
+[node name="Enemy_06" parent="Row01" instance=ExtResource("1_mbmqg")]
+position = Vector2(542, 52)
+speed = 3.0
+
+[node name="Enemy_07" parent="Row01" instance=ExtResource("1_mbmqg")]
+position = Vector2(642, 52)
+speed = 3.0
+
+[node name="Enemy_08" parent="Row01" instance=ExtResource("1_mbmqg")]
+position = Vector2(742, 52)
+speed = 3.0
+
+[node name="Enemy_09" parent="Row01" instance=ExtResource("1_mbmqg")]
+position = Vector2(842, 52)
+speed = 3.0
+
+[node name="Enemy_10" parent="Row01" instance=ExtResource("1_mbmqg")]
+position = Vector2(942, 52)
+speed = 3.0
+
+[node name="Enemy_11" parent="Row01" instance=ExtResource("1_mbmqg")]
+position = Vector2(1042, 52)
+speed = 3.0
+
+[node name="Enemy_12" parent="Row01" instance=ExtResource("1_mbmqg")]
+position = Vector2(1142, 52)
+speed = 3.0
+
+[node name="Enemy_13" parent="Row01" instance=ExtResource("1_mbmqg")]
+position = Vector2(1242, 52)
+speed = 3.0
+
+[node name="Row02" type="Node2D" parent="."]
+position = Vector2(0, 96)
+
+[node name="Enemy_01" parent="Row02" instance=ExtResource("1_mbmqg")]
+position = Vector2(42, 52)
+speed = 3.0
+direction = 1
+
+[node name="Enemy_02" parent="Row02" instance=ExtResource("1_mbmqg")]
+position = Vector2(142, 52)
+speed = 3.0
+direction = 1
+
+[node name="Enemy_03" parent="Row02" instance=ExtResource("1_mbmqg")]
+position = Vector2(242, 52)
+speed = 3.0
+direction = 1
+
+[node name="Enemy_04" parent="Row02" instance=ExtResource("1_mbmqg")]
+position = Vector2(342, 52)
+speed = 3.0
+direction = 1
+
+[node name="Enemy_05" parent="Row02" instance=ExtResource("1_mbmqg")]
+position = Vector2(442, 52)
+speed = 3.0
+direction = 1
+
+[node name="Enemy_06" parent="Row02" instance=ExtResource("1_mbmqg")]
+position = Vector2(542, 52)
+speed = 3.0
+direction = 1
+
+[node name="Enemy_07" parent="Row02" instance=ExtResource("1_mbmqg")]
+position = Vector2(642, 52)
+speed = 3.0
+direction = 1
+
+[node name="Enemy_08" parent="Row02" instance=ExtResource("1_mbmqg")]
+position = Vector2(742, 52)
+speed = 3.0
+direction = 1
+
+[node name="Enemy_09" parent="Row02" instance=ExtResource("1_mbmqg")]
+position = Vector2(842, 52)
+speed = 3.0
+direction = 1
+
+[node name="Enemy_10" parent="Row02" instance=ExtResource("1_mbmqg")]
+position = Vector2(942, 52)
+speed = 3.0
+direction = 1
+
+[node name="Enemy_11" parent="Row02" instance=ExtResource("1_mbmqg")]
+position = Vector2(1042, 52)
+speed = 3.0
+direction = 1
+
+[node name="Enemy_12" parent="Row02" instance=ExtResource("1_mbmqg")]
+position = Vector2(1142, 52)
+speed = 3.0
+direction = 1
+
+[node name="Enemy_13" parent="Row02" instance=ExtResource("1_mbmqg")]
+position = Vector2(1242, 52)
+speed = 3.0
+direction = 1
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+process_callback = 0

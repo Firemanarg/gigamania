@@ -1,0 +1,152 @@
+[gd_scene load_steps=13 format=3 uid="uid://bpgkoloejvjr7"]
+
+[ext_resource type="Script" path="res://scenes/screens/main_menu_screen.gd" id="1_pcegi"]
+[ext_resource type="Shader" path="res://shaders/stars.gdshader" id="1_vycxk"]
+[ext_resource type="FontFile" uid="uid://ceokif2jtvdfs" path="res://assets/fonts/Megatron.otf" id="4_jveyp"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_b2cbs"]
+load_path = "res://.godot/imported/laser_enemy_06.png-fb76b42d0f989c7ba1ddf4f31e103d15.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_rf6b6"]
+load_path = "res://.godot/imported/laser_player.png-5b4aa4b36ff6d3b69426b1b2df86c9a7.ctex"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nvtdh"]
+shader = ExtResource("1_vycxk")
+shader_parameter/dimensions = Vector2(1024, 600)
+shader_parameter/small_stars = 50.0
+shader_parameter/small_stars_far_size = 0.5
+shader_parameter/small_stars_near_size = 0.5
+shader_parameter/large_stars = 20.0
+shader_parameter/large_stars_far_size = 0.5
+shader_parameter/large_stars_near_size = 0.3
+shader_parameter/far_stars_color = Color(1, 1, 1, 0.172549)
+shader_parameter/near_stars_color = Color(1, 1, 1, 0.568627)
+shader_parameter/base_scroll_speed = 0.2
+shader_parameter/additional_scroll_speed = 0.5
+shader_parameter/small_stars_texture = SubResource("CompressedTexture2D_rf6b6")
+shader_parameter/large_stars_texture = SubResource("CompressedTexture2D_b2cbs")
+
+[sub_resource type="Gradient" id="Gradient_il5hw"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ionsf"]
+gradient = SubResource("Gradient_il5hw")
+fill_to = Vector2(0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hmuvy"]
+bg_color = Color(0.501961, 0.65098, 0.729412, 0.784314)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.698039, 0.807843, 0.862745, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 20
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3yf48"]
+bg_color = Color(0.768627, 0.854902, 0.898039, 0.909804)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.698039, 0.807843, 0.862745, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 20
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2wt0f"]
+bg_color = Color(0.239216, 0.345098, 0.403922, 0.909804)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.698039, 0.807843, 0.862745, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 20
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_twoxv"]
+
+[node name="MainMenuScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pcegi")
+
+[node name="StarsBackground" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_nvtdh")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_ionsf")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.313726, 0.447059, 0.509804, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("4_jveyp")
+theme_override_font_sizes/font_size = 60
+text = "GiGAMAniA"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="PlayButton" type="Button" parent="CenterContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("4_jveyp")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_hmuvy")
+theme_override_styles/hover = SubResource("StyleBoxFlat_3yf48")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_2wt0f")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_twoxv")
+text = "play"
+
+[node name="ScoresButton" type="Button" parent="CenterContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("4_jveyp")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_hmuvy")
+theme_override_styles/hover = SubResource("StyleBoxFlat_3yf48")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_2wt0f")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_twoxv")
+text = "scores"
+
+[node name="QuitButton" type="Button" parent="CenterContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("4_jveyp")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_hmuvy")
+theme_override_styles/hover = SubResource("StyleBoxFlat_3yf48")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_2wt0f")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_twoxv")
+text = "quit"
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]

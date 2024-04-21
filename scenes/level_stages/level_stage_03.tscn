@@ -1,0 +1,41 @@
+[gd_scene load_steps=2 format=3 uid="uid://d26ac2wedq1bo"]
+
+[ext_resource type="PackedScene" uid="uid://dwxajtk1qa8wg" path="res://scenes/enemies/enemy_03.tscn" id="1_u7hod"]
+
+[node name="LevelStage03" type="Node2D"]
+
+[node name="Enemy03_01" parent="." instance=ExtResource("1_u7hod")]
+position = Vector2(83, 82)
+vertical_speed = 10.0
+max_x_offset = 740.0
+speed = 5.0
+
+[node name="Enemy03_02" parent="." instance=ExtResource("1_u7hod")]
+position = Vector2(488, 82)
+vertical_speed = 10.0
+max_x_offset = 760.0
+attack_initial_delay = 3.0
+speed = 5.0
+
+[node name="Enemy03_03" parent="." instance=ExtResource("1_u7hod")]
+position = Vector2(915, 82)
+vertical_speed = 10.0
+max_x_offset = 720.0
+attack_initial_delay = 7.0
+speed = 5.0
+
+[node name="Enemy03_04" parent="." instance=ExtResource("1_u7hod")]
+position = Vector2(1067, 174)
+vertical_speed = 10.0
+max_x_offset = 820.0
+attack_initial_delay = 4.0
+speed = 5.0
+direction = 1
+
+[node name="Enemy03_05" parent="." instance=ExtResource("1_u7hod")]
+position = Vector2(400, 174)
+vertical_speed = 10.0
+max_x_offset = 750.0
+attack_initial_delay = 6.0
+speed = 5.0
+direction = 1

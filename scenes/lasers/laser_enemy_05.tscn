@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://04kwmwt6rhuk"]
+
+[ext_resource type="PackedScene" uid="uid://crdk4b8ub2fht" path="res://scenes/lasers/laser.tscn" id="1_cydf1"]
+[ext_resource type="Texture2D" uid="uid://b4r2fwtbw6krq" path="res://assets/sprites/projectiles/laser_enemy_05.png" id="2_bsl2w"]
+
+[node name="LaserEnemy05" instance=ExtResource("1_cydf1")]
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_bsl2w")
+
+[node name="VisibleOnScreenNotifier2D" parent="." index="2"]
+scale = Vector2(0.7, 1.9)

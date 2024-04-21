@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://p5vl45wc62wy"]
+
+[ext_resource type="PackedScene" uid="uid://bp203kcn608bk" path="res://scenes/enemies/enemy.tscn" id="1_jrx30"]
+[ext_resource type="Texture2D" uid="uid://bjvfwinkhngvs" path="res://assets/sprites/enemies/enemy_02.png" id="2_7qffb"]
+[ext_resource type="Script" path="res://scenes/enemies/enemy_02.gd" id="2_jn3ms"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ljyyd"]
+radius = 23.0
+height = 74.0
+
+[node name="Enemy02" instance=ExtResource("1_jrx30")]
+script = ExtResource("2_jn3ms")
+frequency = 5.0
+amplitude = 50.0
+speed = 5.0
+
+[node name="Sprite2D" parent="." index="0"]
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("2_7qffb")
+
+[node name="VisibleOnScreenNotifier2D" parent="." index="1"]
+scale = Vector2(3.1, 4.4)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ProjectileDetector" index="0"]
+shape = SubResource("CapsuleShape2D_ljyyd")

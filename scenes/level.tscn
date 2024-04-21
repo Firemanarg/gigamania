@@ -1,0 +1,183 @@
+[gd_scene load_steps=14 format=3 uid="uid://jfwyqmunds05"]
+
+[ext_resource type="Script" path="res://scenes/level.gd" id="1_th1i5"]
+[ext_resource type="Texture2D" uid="uid://cjubonkvnfxwh" path="res://assets/sprites/projectiles/laser_player.png" id="2_o40pk"]
+[ext_resource type="Shader" path="res://shaders/stars.gdshader" id="2_s75p0"]
+[ext_resource type="PackedScene" uid="uid://cfi8qn0swyijb" path="res://scenes/player.tscn" id="2_sexvc"]
+[ext_resource type="Texture2D" uid="uid://c0686a8tvw5xw" path="res://assets/sprites/projectiles/laser_enemy_06.png" id="3_d4xsq"]
+[ext_resource type="Texture2D" uid="uid://2t114lbov48j" path="res://assets/sprites/icons/score.png" id="6_cpijs"]
+[ext_resource type="Texture2D" uid="uid://bibuq6ow4d4lh" path="res://assets/sprites/icons/energy.png" id="6_vdi5l"]
+[ext_resource type="Texture2D" uid="uid://cvwjwawub6pn1" path="res://assets/sprites/player.png" id="7_keceb"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nlyel"]
+shader = ExtResource("2_s75p0")
+shader_parameter/dimensions = Vector2(1024, 600)
+shader_parameter/small_stars = 50.0
+shader_parameter/small_stars_far_size = 0.5
+shader_parameter/small_stars_near_size = 0.5
+shader_parameter/large_stars = 20.0
+shader_parameter/large_stars_far_size = 0.5
+shader_parameter/large_stars_near_size = 0.3
+shader_parameter/far_stars_color = Color(1, 1, 1, 0.0784314)
+shader_parameter/near_stars_color = Color(1, 1, 1, 0.0588235)
+shader_parameter/base_scroll_speed = 0.8
+shader_parameter/additional_scroll_speed = 0.9
+shader_parameter/small_stars_texture = ExtResource("2_o40pk")
+shader_parameter/large_stars_texture = ExtResource("3_d4xsq")
+
+[sub_resource type="Gradient" id="Gradient_cvdkt"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_sps8q"]
+gradient = SubResource("Gradient_cvdkt")
+fill_to = Vector2(0, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_j3xt1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sgi8j"]
+bg_color = Color(1, 0.8, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.737255, 0.592157, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_th1i5")
+
+[node name="CanvasLayerBackground" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="StarsBackground" type="TextureRect" parent="CanvasLayerBackground"]
+material = SubResource("ShaderMaterial_nlyel")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_sps8q")
+
+[node name="LaserLayer" type="Node2D" parent="."]
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+process_callback = 0
+
+[node name="Player" parent="." instance=ExtResource("2_sexvc")]
+position = Vector2(642, 630)
+shoot_delay = 0.05
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("6_cpijs")
+stretch_mode = 5
+
+[node name="ScoreLabel" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "123456789"
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("6_cpijs")
+stretch_mode = 5
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(50, 30)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+texture = ExtResource("7_keceb")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(50, 30)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+texture = ExtResource("7_keceb")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(50, 30)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+texture = ExtResource("7_keceb")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="VSeparator" type="VSeparator" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/separator = SubResource("StyleBoxEmpty_j3xt1")
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/MarginContainer/VBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 3
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer2"]
+layout_mode = 2
+texture = ExtResource("6_vdi5l")
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer2"]
+layout_mode = 2
+
+[node name="EnergyProgressBar" type="ProgressBar" parent="CanvasLayer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer2/CenterContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(500, 25)
+layout_mode = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_sgi8j")
+value = 100.0
+show_percentage = false

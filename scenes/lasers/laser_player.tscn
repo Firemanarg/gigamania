@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://68y528cmokrg"]
+
+[ext_resource type="PackedScene" uid="uid://crdk4b8ub2fht" path="res://scenes/lasers/laser.tscn" id="1_nu5ox"]
+[ext_resource type="Texture2D" uid="uid://cjubonkvnfxwh" path="res://assets/sprites/projectiles/laser_player.png" id="2_l4krt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xkqkv"]
+size = Vector2(14, 58)
+
+[node name="LaserPlayer" instance=ExtResource("1_nu5ox")]
+collision_mask = 2
+speed = 15.0
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_l4krt")
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("RectangleShape2D_xkqkv")
+
+[node name="VisibleOnScreenNotifier2D" parent="." index="2"]
+scale = Vector2(0.7, 2.9)

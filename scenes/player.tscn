@@ -1,0 +1,92 @@
+[gd_scene load_steps=14 format=3 uid="uid://cfi8qn0swyijb"]
+
+[ext_resource type="Texture2D" uid="uid://cvwjwawub6pn1" path="res://assets/sprites/player.png" id="1_2otkr"]
+[ext_resource type="Script" path="res://scenes/player.gd" id="1_yf84w"]
+
+[sub_resource type="Shader" id="Shader_2ne8b"]
+code = "shader_type canvas_item;
+
+uniform vec3 replace_color: source_color = vec3(1.0);
+
+void vertex() {
+	// Called for every vertex the material is visible on.
+}
+
+void fragment() {
+	COLOR.rgb = replace_color;
+}
+
+//void light() {
+	// Called for every pixel for every light affecting the CanvasItem.
+	// Uncomment to replace the default light processing function with this one.
+//}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2drh3"]
+shader = SubResource("Shader_2ne8b")
+shader_parameter/replace_color = Color(0, 1, 1, 1)
+
+[sub_resource type="Curve" id="Curve_x0rl1"]
+_data = [Vector2(0, 0.076923), 0.0, 0.0, 0, 0, Vector2(1, 0.970696), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_vcxg4"]
+curve = SubResource("Curve_x0rl1")
+
+[sub_resource type="Gradient" id="Gradient_4jguh"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0.894118, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_4ajtp"]
+gradient = SubResource("Gradient_4jguh")
+
+[sub_resource type="Curve" id="Curve_d377n"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.603211, 0.794872), -1.02669, -1.02669, 0, 0, Vector2(0.974771, 0.355311), -0.764794, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_620ja"]
+curve = SubResource("Curve_d377n")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_62sd4"]
+particle_flag_disable_z = true
+angle_min = -200.0
+angle_max = 200.0
+angle_curve = SubResource("CurveTexture_vcxg4")
+gravity = Vector3(0, 98, 0)
+linear_accel_max = 36.97
+scale_min = 0.6
+scale_max = 0.75
+scale_curve = SubResource("CurveTexture_620ja")
+color_ramp = SubResource("GradientTexture1D_4ajtp")
+
+[sub_resource type="Gradient" id="Gradient_pcj6g"]
+offsets = PackedFloat32Array(0.357466, 0.425339, 0.692308)
+colors = PackedColorArray(0, 0, 0, 1, 0.951456, 0.951456, 0.951456, 0.0485437, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_n8csj"]
+gradient = SubResource("Gradient_pcj6g")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_yf84w")
+shoot_delay = 0.1
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+material = SubResource("ShaderMaterial_2drh3")
+position = Vector2(0, 18)
+process_material = SubResource("ParticleProcessMaterial_62sd4")
+texture = SubResource("GradientTexture2D_n8csj")
+lifetime = 0.6
+speed_scale = 4.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("1_2otkr")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-45, 5, -33, -26, 0, -30, 33, -26, 45, 5, 18, 32, -18, 32)
+
+[node name="TimerShoot" type="Timer" parent="."]
+process_callback = 0
+one_shot = true

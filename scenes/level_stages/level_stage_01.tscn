@@ -1,0 +1,68 @@
+[gd_scene load_steps=2 format=3 uid="uid://bsl28wsqxdj14"]
+
+[ext_resource type="PackedScene" uid="uid://dyfv68s6p3dfk" path="res://scenes/enemies/enemy_01.tscn" id="1_r0mvg"]
+
+[node name="LevelStage01" type="Node2D"]
+
+[node name="Enemy01_01" parent="." instance=ExtResource("1_r0mvg")]
+position = Vector2(94, 75)
+shoot_delay = 4.7
+initial_delay = 1.0
+
+[node name="Enemy01_02" parent="." instance=ExtResource("1_r0mvg")]
+position = Vector2(311, 75)
+shoot_delay = 4.9
+initial_delay = 5.0
+
+[node name="Enemy01_03" parent="." instance=ExtResource("1_r0mvg")]
+position = Vector2(527, 75)
+shoot_delay = 4.3
+initial_delay = 7.0
+
+[node name="Enemy01_04" parent="." instance=ExtResource("1_r0mvg")]
+position = Vector2(740, 75)
+shoot_delay = 5.1
+initial_delay = 3.0
+
+[node name="Enemy01_05" parent="." instance=ExtResource("1_r0mvg")]
+position = Vector2(953, 75)
+shoot_delay = 4.7
+initial_delay = 5.0
+
+[node name="Enemy01_06" parent="." instance=ExtResource("1_r0mvg")]
+position = Vector2(1164, 75)
+shoot_delay = 5.5
+initial_delay = 9.0
+
+[node name="Enemy01_07" parent="." instance=ExtResource("1_r0mvg")]
+position = Vector2(196, 221)
+direction = 1
+shoot_delay = 4.5
+
+[node name="Enemy01_08" parent="." instance=ExtResource("1_r0mvg")]
+position = Vector2(413, 221)
+direction = 1
+shoot_delay = 5.5
+initial_delay = 3.0
+
+[node name="Enemy01_09" parent="." instance=ExtResource("1_r0mvg")]
+position = Vector2(629, 221)
+direction = 1
+initial_delay = 7.0
+
+[node name="Enemy01_10" parent="." instance=ExtResource("1_r0mvg")]
+position = Vector2(842, 221)
+direction = 1
+shoot_delay = 4.8
+initial_delay = 1.0
+
+[node name="Enemy01_11" parent="." instance=ExtResource("1_r0mvg")]
+position = Vector2(1055, 221)
+direction = 1
+shoot_delay = 5.2
+
+[node name="Enemy01_12" parent="." instance=ExtResource("1_r0mvg")]
+position = Vector2(1266, 221)
+direction = 1
+shoot_delay = 4.8
+initial_delay = 7.0

@@ -1,0 +1,52 @@
+[gd_scene load_steps=2 format=3 uid="uid://c0s7fs1h1jhyq"]
+
+[ext_resource type="PackedScene" uid="uid://p5vl45wc62wy" path="res://scenes/enemies/enemy_02.tscn" id="1_bpfir"]
+
+[node name="level_stage_02" type="Node2D"]
+
+[node name="Enemy02_01" parent="." instance=ExtResource("1_bpfir")]
+position = Vector2(105, 109)
+speed = 3.0
+shoot_delay = 5.2
+
+[node name="Enemy02_02" parent="." instance=ExtResource("1_bpfir")]
+position = Vector2(438, 109)
+frequency = 5.5
+speed = 3.0
+initial_delay = 2.0
+
+[node name="Enemy02_03" parent="." instance=ExtResource("1_bpfir")]
+position = Vector2(743, 109)
+frequency = 5.2
+speed = 3.0
+shoot_delay = 4.7
+initial_delay = 5.0
+
+[node name="Enemy02_07" parent="." instance=ExtResource("1_bpfir")]
+position = Vector2(1063, 109)
+frequency = 4.8
+speed = 3.0
+shoot_delay = 4.3
+initial_delay = 7.0
+
+[node name="Enemy02_04" parent="." instance=ExtResource("1_bpfir")]
+position = Vector2(271, 277)
+speed = 3.0
+direction = 1
+shoot_delay = 5.1
+initial_delay = 3.0
+
+[node name="Enemy02_05" parent="." instance=ExtResource("1_bpfir")]
+position = Vector2(691, 277)
+frequency = 5.5
+speed = 3.0
+direction = 1
+shoot_delay = 4.8
+initial_delay = 5.0
+
+[node name="Enemy02_06" parent="." instance=ExtResource("1_bpfir")]
+position = Vector2(1133, 277)
+speed = 3.0
+direction = 1
+shoot_delay = 5.2
+initial_delay = 1.0

@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://dwxajtk1qa8wg"]
+
+[ext_resource type="PackedScene" uid="uid://bp203kcn608bk" path="res://scenes/enemies/enemy.tscn" id="1_6utcb"]
+[ext_resource type="Script" path="res://scenes/enemies/enemy_03.gd" id="2_esstr"]
+[ext_resource type="Texture2D" uid="uid://jaon1whnicn7" path="res://assets/sprites/enemies/enemy_03.png" id="2_irtkg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bur28"]
+size = Vector2(36, 36)
+
+[node name="Enemy03" instance=ExtResource("1_6utcb")]
+script = ExtResource("2_esstr")
+vertical_speed = 20.0
+max_x_offset = 200.0
+max_y_limit = 600.0
+attack_speed = 5.0
+attack_scale = 4.0
+attack_initial_delay = 0.0
+speed = 7.0
+enable_timed_shoot = false
+
+[node name="Sprite2D" parent="." index="0"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_irtkg")
+
+[node name="VisibleOnScreenNotifier2D" parent="." index="1"]
+scale = Vector2(1.8, 1.8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ProjectileDetector" index="0"]
+shape = SubResource("RectangleShape2D_bur28")

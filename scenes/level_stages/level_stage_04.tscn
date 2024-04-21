@@ -1,0 +1,57 @@
+[gd_scene load_steps=2 format=3 uid="uid://bbbo3ynputecj"]
+
+[ext_resource type="PackedScene" uid="uid://ug1absy7el14" path="res://scenes/enemies/enemy_04.tscn" id="1_m7jpt"]
+
+[node name="LevelStage04" type="Node2D"]
+
+[node name="Enemy04_01" parent="." instance=ExtResource("1_m7jpt")]
+position = Vector2(107, 83)
+max_x_offset = 650.0
+attack_speed = 10.0
+attack_initial_delay = 1.0
+pre_attack_delay = 4.0
+
+[node name="Enemy04_02" parent="." instance=ExtResource("1_m7jpt")]
+position = Vector2(340, 133)
+max_x_offset = 620.0
+attack_speed = 10.0
+attack_initial_delay = 3.0
+pre_attack_delay = 4.0
+
+[node name="Enemy04_03" parent="." instance=ExtResource("1_m7jpt")]
+position = Vector2(567, 105)
+max_x_offset = 680.0
+attack_speed = 10.0
+attack_initial_delay = 5.0
+pre_attack_delay = 4.0
+
+[node name="Enemy04_04" parent="." instance=ExtResource("1_m7jpt")]
+position = Vector2(714, 198)
+max_x_offset = 590.0
+attack_speed = 10.0
+attack_initial_delay = 6.0
+pre_attack_delay = 4.0
+direction = 1
+
+[node name="Enemy04_05" parent="." instance=ExtResource("1_m7jpt")]
+position = Vector2(960, 228)
+max_x_offset = 610.0
+attack_speed = 10.0
+attack_initial_delay = 2.0
+pre_attack_delay = 4.0
+direction = 1
+
+[node name="Enemy04_06" parent="." instance=ExtResource("1_m7jpt")]
+position = Vector2(1149, 52)
+max_x_offset = 560.0
+attack_speed = 10.0
+attack_initial_delay = 8.0
+pre_attack_delay = 4.0
+direction = 1
+
+[node name="Enemy04_07" parent="." instance=ExtResource("1_m7jpt")]
+position = Vector2(454, 258)
+max_x_offset = 560.0
+attack_speed = 10.0
+attack_initial_delay = 2.0
+pre_attack_delay = 4.0

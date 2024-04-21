@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://dyfv68s6p3dfk"]
+
+[ext_resource type="Script" path="res://scenes/enemies/enemy_01.gd" id="1_fka0n"]
+[ext_resource type="PackedScene" uid="uid://bp203kcn608bk" path="res://scenes/enemies/enemy.tscn" id="1_w35bl"]
+[ext_resource type="Texture2D" uid="uid://b7xlqarx5m4fo" path="res://assets/sprites/enemies/enemy_01.png" id="2_quihn"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2sgta"]
+radius = 30.0
+
+[node name="Enemy01" instance=ExtResource("1_w35bl")]
+script = ExtResource("1_fka0n")
+
+[node name="Sprite2D" parent="." index="0"]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_quihn")
+
+[node name="VisibleOnScreenNotifier2D" parent="." index="1"]
+scale = Vector2(2.9, 3.4)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ProjectileDetector" index="0"]
+shape = SubResource("CircleShape2D_2sgta")

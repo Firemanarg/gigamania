@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://bp203kcn608bk"]
+
+[ext_resource type="Script" path="res://scenes/enemies/enemy.gd" id="1_0y0qj"]
+
+[node name="Enemy" type="Node2D"]
+script = ExtResource("1_0y0qj")
+
+[node name="ProjectileDetector" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="TimerShoot" type="Timer" parent="."]
+process_callback = 0
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[connection signal="timeout" from="TimerShoot" to="." method="_on_timer_shoot_timeout"]
